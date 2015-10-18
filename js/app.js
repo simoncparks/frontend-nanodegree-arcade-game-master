@@ -1,6 +1,4 @@
 var Enemy = function () {
-    //Three variable to track the position and speed of the enemy
-    var x, y, speed;
     //Creates an enemy when the game is first run.
     this.create();
 };
@@ -25,7 +23,7 @@ Enemy.prototype.create = function (){
     } else {
         this.x = -100;
         this.sprite = 'images/enemy-bug.png';
-    };
+    }
 };
 
 Enemy.prototype.update = function(dt) {
@@ -36,7 +34,7 @@ Enemy.prototype.update = function(dt) {
         this.x = -100;
     } else if (this.x < -150) {
         this.x = 500;
-    };
+    }
     //Checks if they player and any enemies are in a collison state
     //There is a y displacement of 10 and an x displacement of +- 50
     //If a collision occurs the player's position is reset, enemies
@@ -46,7 +44,7 @@ Enemy.prototype.update = function(dt) {
         player.reset();
         allEnemies = [];
         allEnemies.push(new Enemy());
-    };
+    }
 };
 
 Enemy.prototype.render = function() {
@@ -55,8 +53,6 @@ Enemy.prototype.render = function() {
 };
 
 var Player = function() {
-    //position variables for the player
-    var x, y;
     //player sprite
     this.sprite = 'images/char-boy.png';
     //Creates the player the first time the game is run
@@ -82,15 +78,15 @@ Player.prototype.update = function(keyPressed){
         this.y -= 85;
     } else if ((keyPressed === 'down') && (this.y + 85 < 401)) {
         this.y += 85;
-    };
+    }
     //When the player reaches the water, they are moved back to the
     //beginning and a new enemy is added up to a maximum of 10.
     if(this. y < -1){
         this.reset();
         if(allEnemies.length < 10) {
             allEnemies.push(new Enemy());
-        };
-    };
+        }
+    }
 };
 
 Player.prototype.render = function(){
